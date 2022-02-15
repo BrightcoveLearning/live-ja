@@ -29,7 +29,8 @@
   name: '&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブビーコン'
   url: 'https://beacon.support.brightcove.com' 
 - Live:
-  name: '&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブライブ'
+  name: '&nbsp;&nbsp;&nbsp;&nbsp;
+Brightcove Live'
   url: 'https://live.support.brightcove.com' 
 - Zencoder:
   name: '&nbsp;&nbsp;&nbsp;&nbsp; Zencoder'
