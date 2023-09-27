@@ -373,7 +373,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
       <li>ブラウザ ウィンドウで、<a href="https://studio.brightcove.com"> Video Cloud Studio に移動します</a>。</li>
       <li>Video Cloud のログイン認証情報を入力し、[ <strong>サインイン</strong>] をクリックします。</li>
       <li>ページの右上隅に現在の Video Cloud アカウント名が表示されます。複数のアカウントがある場合は、アカウント選択ドロップダウンをクリックし、ライブアセットを保存するアカウントを選択します。Liveを選択したアカウントでまだ有効でない場合、Liveモジュールがトライアルモードで開きます。
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" width="400" height="600"  src="/assets/images/get-started/10821/node10820-account-selector.png" /></figure>
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" width="400" height="600"  src="/assets/images/s-live-img/get-started/sbs-obs-account-selector.png" /></figure>
       </li>
       <li>左のナビゲーションより<strong>ライブ</strong>(Live)をクリックします。</li>
       <li>[ <strong>イベントを作成</strong>]ボタンをクリックして、新しいイベントを作成します。</li>
@@ -382,17 +382,17 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
       <li>アカウントに必須カスタムフィールドが設定されている場合は、カスタムフィールドに値が割り当てられていることを確認してください。</li>
       <li>ドロップダウンリストから<strong>ライブ トランスコード プロファイル</strong>を選択します。ライブ トランスコード プロファイルは、作成されるライブ レンディションの数と品質を制御します。</li>
       <li>完了したら、[ <strong>イベントをビデオアセットに変換</strong>] を選択します。これにより、イベントがVODとして Media モジュールに保存されます。
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/get-started/10821/node10820-create-live-event.png" /></figure>
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/get-started/sbs-obs-create-live-event.png" /></figure>
       </li>
       
       <li><strong>ストリーム オプション</strong>セクションで、エンコーダーの場所に最も近い<strong>地域</strong>を選択します。</li>
       <li>[ <strong>詳細オプション</strong>]リンクをクリックして、詳細オプションを展開します。</li>
       <li>[ <strong>再接続時間</strong>]を 10 分 (デフォルト) に設定します。
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/get-started/10821/node10820-adv-options.png" /></figure>
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/get-started/sbs-srt-adv-options.png" /></figure>
         <aside class="bcls-aside bcls-aside--information">OBS Encoder は SRT プロトコルをサポートしており、[ <strong>詳細オプション</strong>]メニューの [ <strong>入力形式</strong>]セクションでこのオプションを選択できます。</aside>
       </li>
       <li>[<strong>ストリーミングの開始</strong>]をクリックします。Live モジュールは、<strong>ストリームエンドポイント (RTMP URL) </strong><strong>とストリーム名</strong>を返します。これらの値はエンコーダー設定で使用されます。<aside class="bcls-aside bcls-aside--information">ライブイベントで SRT プロトコルを選択した場合、OBS でストリーム設定サービスの [カスタム] を選択し、サーバーボックスに <code translate="No">srt://</code>パスを入力することで利用できます。</aside>
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/get-started/10821/node10820-encoder-settings1.png" /></figure>
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/get-started/sbs-obs-encoder-settings.png" /></figure>
       </li>
     </ol>
   </section>
@@ -410,16 +410,16 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     <ol class="bcls-tasklist-restart">
       <li>OBS スタジオを開きます。</li>
       <li>[ <strong>ソース</strong>]セクションで、[ <strong>+</strong> ] をクリックして新しいソースを追加します。リストから<strong>ソース</strong>を選択します。このクイックスタートでは、Blackmagic Design Ultra Studio ミニレコーダーを使用してラップトップに接続されたデジタル一眼レフを使用しているため、<strong> Blackmagic Device</strong>が選択されています。
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/get-started/10821/node18621-add-source.png" /></figure>
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/get-started/sbs-obs-add-source.png" /></figure>
       </li>
       <li>新しいソースの名前を入力し、<strong>「OK」</strong>をクリックします。
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/get-started/10821/node18621-blackmagic.png" /></figure>
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/get-started/sbs-obs-source-name.png" /></figure>
       </li>
       <li>[ <strong>デバイス</strong>]リストからカメラを選択します。プロパティダイアログにプレビューが表示されます。[<strong>OK</strong>]をクリックします。
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/get-started/10821/node18621-source-preview.png" /></figure>
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/get-started/sbs-obs-source-preview.png" /></figure>
       </li>
       <li>[コントロール] セクションで、[ <strong>設定</strong>] をクリックします。
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/get-started/10821/node18621-controls.png" /></figure>
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/get-started/sbs-obs-settings.png" /></figure>
       </li>
       <li>[設定]ダイアログの左側にある<strong>ストリーム</strong>をクリックします。</li>
       <li>[ <strong>ストリームタイプ</strong> ] で、[ <strong>カスタムストリーミングサーバー</strong>]を選択します。</li>
@@ -427,7 +427,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
       <li><strong>ストリーム　キー</strong>には<strong> alive </strong>を使用します。</li>
       <li><strong>OK</strong>をクリックして設定を保存します。</li>
       <li>[コントロール] セクションで、[ <strong>ストリーミングを開始</strong>] をクリックします。ライブストリームが始まるはずです。
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/get-started/10821/node18621-live-stream-OBS.png" /></figure>
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/get-started/sbs-srt-live-stream.png" /></figure>
       </li>
     </ol>
     <aside class="bcls-aside bcls-aside--information">注:ストリームの処理には約 1 分かかります。</aside>
@@ -439,11 +439,11 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
       <li>Liveモジュールに戻ります。</li>
       <li>イベントの「調整室」ページが表示されない場合は、「<strong>ライブ</strong>」タブをクリックして、ライブイベントのリストを表示します。イベント名をクリックして、「調整室」ページを開きます。</li>
       <li>ライブストリームが表示されることを確認します。エンコーダを起動した後、ライブストリームが表示されるまでに1分かかる場合があります。
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/get-started/10821/node10820-control-room.png" /></figure>
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/get-started/sbs-srt-control-room.png" /></figure>
       </li>
       <li>[ <strong>公開と埋め込み</strong>] をクリックします。</li>
       <li><strong>利用可能なプレーヤー</strong>ドロップダウンより、プレーヤーを選択し、<strong> Player URL</strong>をクリックしてライブストリームを表示します。
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/get-started/10821/node10820-embed-code.png" /></figure>
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/live-module/playback-restrictions/embed-code.png" /></figure>
       </li>
       <li>ライブストリームの操作が完了したら、Liveモジュールの [ <strong>ストリームを停止</strong>]ボタンをクリックします。また、OBS Studio に戻り、ストリームボタンをクリックして、エンコーダのストリーミングを停止します。<aside class="bcls-aside bcls-aside--information">注:ライブストリームの完了後、エンコーダーを閉じる/停止することが重要です。データが送信されていない場合でも、エンコーダとBrightcoveの間の接続を開いたままにしておくと、予期しない接続料金が発生する可能性があります。</aside>
       </li>
@@ -465,18 +465,18 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
       <li>[ <strong>完了</strong> ] タブをクリックします。</li>
       <li>イベントを検索し、イベント名をクリックして 調整室 を開きます。</li>
       <li>[<strong>クリップを作成</strong>] をクリックします。クリッピング エディタが開きます。</li>
-      <li>フォーカスタイムライン上のクリッピングハンドルをクリック＆ドラッグして、クリップの始点と終点を設定します。（<img alt="" width="5" height="20" src="/assets/images/get-started/10821/node10820-clip-handle.png" />）
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" width="400" height="300" src="/assets/images/get-started/10821/node10820-clip-start-end.png" /></figure>
+      <li>フォーカスタイムライン上のクリッピングハンドルをクリック＆ドラッグして、クリップの始点と終点を設定します。
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" width="400" height="300" src="/assets/images/s-live-img/get-started/sbs-wirecast-clip-selected.png" /></figure>
       </li>
       <li>[ <strong>クリップのプレビュー</strong>] をクリックして、クリップをプレビューします。必要に応じて、始点と終点を調整できます。</li>
       <li>[ <strong>保存</strong>] をクリックします。</li>
       <li><strong>クリップ名</strong>とその他のメタデータ値を入力します。アカウントの必須フィールドも表示されるので、値を割り当ててください。
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/get-started/10821/node10820-clip-metadata.png" /></figure>
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/get-started/sbs-wirecast-clip-save.png" /></figure>
       </li>
       <li>[<strong>クリップの作成</strong>]をクリックします。取り込みプロセスが開始され、クリップが Video Cloud アカウントに保存されます。</li>
       <li>クリップはクリップエディタの下に表示されます。[ <strong>ソーシャルに公開</strong>] をクリックして、Brightcove Social を使用してクリップをソーシャル配信先のいずれかに公開します。Social モジュールを使用したビデオの公開については、「<a href="https://social.support.brightcove.com/general/publishing-videos-social-media-platforms.html">ソーシャルメディアプラットフォームへのビデオの公開</a>」を参照してください。</li>
       <li>クリップはイベントの<strong>調整室</strong>にも表示されます。
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/get-started/10821/node10820-clips-section.png" /></figure>
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-live-img/get-started/sbs-srt-clips-control-room.png" /></figure>
         <aside class="bcls-aside bcls-aside--information">注:[クリップの作成]ボタンを複数回クリックして、放送の複数のクリップを作成できます。各クリップは別々の VODアセットとして Mediaモジュールに保存されます。</aside>
       </li>
     </ol>
