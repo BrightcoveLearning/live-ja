@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
+  <meta name="description" content="本トピックでは、Brightcove Live ストリームの遅延を削減する方法について説明します。">
   
-  <title>ライブストリームのレイテンシーを低減</title>
+  <title>ライブ配信の遅延の削減</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -316,53 +316,46 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   <ul id="centered_in_page_toc" class="list-none"></ul>
 </details>
 <!-- open in new tab/window -->
-<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="open in new tab" style="margin-top:4em;width: 1.5em;"></a>  <article class="bcls-article">
-  <h1>ライブストリームのレイテンシーの削減</h1>
-  <summary>このトピックでは、Brightcove ライブストリームのレイテンシーを減らす方法について説明します。</summary>
+<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="open in new tab" style="margin-top:4em;width: 1.5em;"></a> 
+<article class="bcls-article">
+    <h1>ライブ配信の遅延の削減</h1>
+    <summary>本トピックでは、Brightcove Live ストリームの遅延を削減する方法について説明します。</summary>
+    
+    <section class="bcls-section">
+      <h2 id="Introduction">概要</h2>
+      <p>遅延（レイテンシー）とは、現実世界で録画された映像が動画プレーヤーで表示されるまでの時間差のことを指します。信号をソースからインターネット経由で視聴者のプレーヤーに送信するには、当然ながらある程度の時間がかかります。さらに、オンライン動画は「セグメント」と呼ばれる離散的なチャンクに分割されて送信されるため、遅延が増加する要因となります。</p>
+    
+      <p>遅延を削減するには、動画セグメントの長さを短縮することが有効です。本ドキュメントでは、その具体的な方法について説明します。</p>
+      
+      <p>ただし、遅延を短縮することでいくつかのデメリットが生じる可能性があるため、以下の点に注意が必要です。動画のスムーズな再生を確保するために、プレーヤーは現在の再生位置より先のいくつかの動画セグメントを事前にダウンロード（バッファリング）しています。</p>
+      
+      <p>セグメントの長さを短縮する際には、次の点を考慮してください。</p>
+      <ul>
+        <li>プレーヤーが事前に取得する動画データが減るため、バッファリング中に再生が一時停止するリスクが高まる可能性があります。</li>
+        <li>CDN（コンテンツ デリバリー ネットワーク）のリクエスト トラフィックが増加します。</li>
+        <li>Apple は標準のライブストリーミング HLS において、6秒のセグメント長を推奨しています。セグメントを短縮すると、環境が最適でない場合にストリームの安定性が低下する可能性があります。遅延を最小限に抑える必要がある場合は、<strong>低遅延ライブ</strong> の使用を検討してください。</li>
+      </ul>
+    
+      <aside class="bcls-aside bcls-aside--information">本ドキュメントは通常のライブストリームの遅延削減について説明しています。Low Latency Live（低遅延ライブ）および LL-HLS については言及していません。</aside>
+    </section>
+    
+
   <section class="bcls-section">
-
-
-<h2 id="Introduction">はじめに</h2>
-
-<p>レイテンシーとは、実生活で何かが記録されてからビデオプレーヤーで表示されるまでのタイムラグです。もちろん、ソースからの信号をインターネット経由で視聴者のプレーヤーに送信するために必要なリアルタイムがあります。レイテンシーは、オンラインビデオがセグメントと呼ばれる控えめなチャンクで送信されるという事実によって悪化します。</p>
-
-<p>ビデオセグメントの長さを短くすることでレイテンシーを短縮できます。以下のセクションでは、これを行う方法について詳しく説明します。ただし、トレードオフがあることに注意してください。中断のない再生を保証するために、プレーヤーは現在の再生位置（これをバッファリングと呼びます）より先にいくつかのビデオセグメントをダウンロードして、必要に応じて準備が整います。セグメントの長さを短くすると、プレーヤーがプリフェッチするビデオデータが少なくなり、プレーヤーが追加のセグメントをバッファしている間に再生が一時停止する可能性が高くなります。</p>
-
-<h3>その他の制限事項</h3>
-
-<p>レイテンシーを短縮したライブストリームには、次の制限が適用されます。</p>
-
-<ul>
-	<li>SSAI <strong></strong>はサポートされていません</li>
-	<li>DRM <strong></strong>はサポートされていません</li>
-	<li>DVR ウィンドウは<strong> 5 分未満にする必要があります</strong></li>
-	<li><strong>4</strong>つ以下のレンディション</li>
-</ul>
-</section>
-
-<section class="bcls-section">
-<h2 id="Creating_Reduced_Latency_Live_Profile">レイテンシー短縮ライブプロファイルの作成</h2>
-
-<p>レイテンシーを減らすには、カスタムライブプロファイルを作成する必要があります。以下の手順に従います。</p>
-
-<ol class="bcls-tasklist-restart">
-	<li>スタジオにログインする</li>
-	<li>[ <strong>管理]</strong> &gt; [ <strong>プロファイルの取り込み] に移動します</strong>。
-	<!-- <figure class="bcls-figure"><img class="bcls-image" alt="Go to Ingest Profiles" src="/assets/images/general/18954/go-to-ingest-profiles.png" />
-	<figcaption class="bcls-caption--image">プロファイルの取り込みに移動</figcaption>
-	</figure> -->
-	</li>
-	<li><strong>4</strong>つ以下のレンディションを持つ<strong> Live</strong> Ingest プロファイルのいずれかを選択します。
-	<figure class="bcls-figure"><img class="bcls-image" alt="Select a Live Profile" src="/assets/images/s-live-img/general/select_ingest_profile.png" />
-	<figcaption class="bcls-caption--image">ライブプロファイルの選択</figcaption>
-	</figure>
-	</li>
-	<li>リンクをクリックしてプロフィールを開きます</li>
-	<li><strong>Duplicate</strong>ボタンをクリックして、これに基づいて新しいプロファイルを作成します。</li>
-	<li>新しいプロファイルで、<code translate="No">name</code>を「低レイテンシープロファイル」（または任意の呼び出し）に変更します。</li>
-	<li>それぞれについて<code translate="No">renditions</code>、<code translate="No">segment_seconds</code><code translate="No">2</code>をに変更して、セグメントの長さを 2 秒にします。</li>
-	<li>あなたのプロフィール全体は次のようになります：
-	<pre class="line-numbers">
+    <h2 id="Creating_Reduced_Latency_Live_Profile">低遅延ライブ プロファイルの作成</h2>
+    <p>遅延を減らすためには、カスタムのライブ プロファイルを作成する必要があります。以下の手順に従ってください：</p>
+    <ol class="bcls-tasklist-restart">
+      <li>Studio にログインします。</li>
+      <li><strong>管理</strong>モジュールを開きます。</li>
+      <li>左側のナビゲーションから <strong>トランスコードプロファイル</strong> をクリックします。</li>
+      <li><strong>Live</strong> トランスコードプロファイルの中から、最大 <strong>4</strong> つのレンディションを含むものを選択します。
+        <figure class="bcls-figure"><img class="bcls-image" alt="ライブプロファイルを選択" src="/assets/images/s-live-img/general/select_ingest_profile.png" /> </figure>
+      </li>
+      <li>プロファイルのリンクをクリックして開きます。</li>
+      <li><span class="button-blue">複製</span> をクリックして、選択したプロファイルを基に新しいプロファイルを作成します。</li>
+      <li>新しいプロファイルで、<code translate="No">name</code> を「低遅延プロファイル」（または意味のある名前）に変更します。</li>
+      <li>各 <code translate="No">renditions</code> の <code translate="No">segment_seconds</code> を <code translate="No">2</code> に変更し、セグメントの長さを2秒に短縮します。</li>
+      <li>プロファイルは以下のようになります：
+        <pre class="line-numbers">
 <code class="language-json" translate="No">{
   "model_version": 1,
   "name": "<span class="bcls-highlight">Low Latency Profile</span>",
@@ -424,19 +417,19 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   ],
   "packages": []
 }</code></pre>
-	</li>
-	<li>このプロファイルを使用するには、ライブモジュールで新しいライブイベントを作成するタイミングを選択します。
-	<figure class="bcls-figure"><img class="bcls-image" alt="Create Live Event" src="/assets/images/s-live-img/general/create-live-event.png" />
-	<figcaption class="bcls-caption--image">ライブイベントの作成</figcaption>
-	</figure>
-	</li>
-</ol>
-</section>
-
-<section class="bcls-section">
-<h2 id="Using_the_Live_API">ライブ API の使用</h2>
-
-<p>レイテンシーを短縮し、Live API を使用してライブジョブを作成する場合は、通常どおりにジョブを作成し、<strong>レンディションを 4 つ以下に抑え</strong>、<code translate="No">segment_seconds</code>へのレンディションごとに<code translate="No">2</code>。また、「<a href="#Introduction">はじめに」に記載されているその他の制限事項も守ってください</a>。</p>
+  </li>
+  <li>このプロファイルを使用するには、Live モジュールで新しいライブイベントを作成する際に選択してください。
+    <figure class="bcls-figure"><img class="bcls-image" alt="ライブイベントの作成" src="/assets/images/s-live-img/general/create-live-event.png" /> </figure>
+  </li>
+  </ol>
+  </section>
+  <section class="bcls-section">
+  <h2 id="Using_the_Live_API">Live API の使用</h2>
+  <p>遅延を短縮したい場合、Live API を使用してライブジョブを作成する際に、通常通りジョブを作成しますが、<strong>最大 4 つのレンディション</strong> のみを含め、各レンディションの <code translate="No">segment_seconds</code> を <code translate="No">2</code> に設定してください。この機能を使用する際には、<a href="#Limitations">記載されている制限事項</a> を確認するようにしてください。</p>
+  </section>
+  <section class="bcls-section">
+  <h2 id="Limitations">制限事項</h2>
+  <p>2秒のセグメント長を使用すると、冗長性を備えたライブジョブとの互換性がありません。</p>
 </section>
 </article>
  <!-- complete bootstrap layout -->
@@ -454,7 +447,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 
 <hr>
 <div class="last-updated">
-  ページの最終更新日30 Sep 2021
+  ページの最終更新日21 Feb 2024
 </div>
 
 
